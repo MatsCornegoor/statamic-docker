@@ -3,7 +3,7 @@ services:
   statamic:
     container_name: statamic
     build: .
-    image: statamic:latest
+    image: mystatamic:latest
     restart: unless-stopped
     env_file: stack.env
     # environment:
