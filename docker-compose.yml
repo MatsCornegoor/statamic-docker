@@ -1,0 +1,23 @@
+version: "3"
+services:
+  statamic:
+    container_name: statamic
+    build: .
+    image: statamic:latest
+    restart: unless-stopped
+    env_file: .env
+    # environment:
+
+    volumes:
+      - statamic-users:/app/users
+      - statamic-content:/app/content
+      - statamic-assets:/app/public/assets
+
+    ports:
+      - "80"
+      - "443"
+
+volumes:
+    statamic-users:
+    statamic-content:
+    statamic-assets:
