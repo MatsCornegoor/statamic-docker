@@ -18,7 +18,10 @@ COPY --from=build /app .
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
 RUN php artisan optimize && \
-    php please cache:clear
+    php please cache:clear && \
+    php please stache:refresh && \
+    php artisan config:clear && \
+    php artisan view:clear
 
 # Ensure all of our files are owned by the same user and group.
 RUN chown -R application:application .
