@@ -6,7 +6,6 @@ services:
     image: mystatamic:latest
     restart: unless-stopped
     env_file: stack.env
-    # environment:
 
     volumes:
       - statamic-users:/app/users
