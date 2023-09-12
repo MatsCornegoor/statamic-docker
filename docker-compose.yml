@@ -6,7 +6,6 @@ services:
     image: mystatamic:latest
     restart: unless-stopped
     env_file: .env
-    # environment:
 
     volumes:
       - statamic-users:/app/users
@@ -16,6 +15,16 @@ services:
     ports:
       - "80"
       - "443"
+
+
+  backup:
+    image: offen/docker-volume-backup:v2
+    env_file: .env
+    volumes:
+        - /var/run/docker.sock:/var/run/docker.sock:ro
+        - ./backups:/etc/dockervolumebackup/conf.d
+        - statamic-content:/backup/statamic-content-backup:ro
+        - statamic-assets:/backup/statamic-assets-backup:ro
 
 volumes:
     statamic-users:
